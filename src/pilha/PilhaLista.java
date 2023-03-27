@@ -5,6 +5,10 @@ import lineares.ListaEncadeada;
 public class PilhaLista<T> implements Pilha<T> {
     private ListaEncadeada<T> lista;
 
+    public PilhaLista(){
+        lista = new ListaEncadeada<>();
+    }
+
     // métodos
     @Override
     public void push(T info) {
@@ -34,6 +38,16 @@ public class PilhaLista<T> implements Pilha<T> {
 
     @Override
     public void liberar() {
-        lista.
+        String s = lista.exibir();
+        String valor = "";
+        for(int i = 1; i < s.length() - 1; i++){
+            if(s.charAt(i) != ','){
+                valor += s.charAt(i);
+            } else {
+                lista.retirar((T) valor);
+                valor = "";
+                i++;
+            }
+        }
     }
 }

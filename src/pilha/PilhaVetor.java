@@ -5,7 +5,7 @@ public class PilhaVetor<T> implements Pilha<T> {
     private T[] info;
 
     // construtor
-    public PilhaVetor(int limite, int tamanho, T[] info) {
+    public PilhaVetor(int limite) {
         this.info = (T[]) new Object[limite];
         this.limite = limite;
         this.tamanho = 0;

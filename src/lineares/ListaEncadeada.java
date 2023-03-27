@@ -5,21 +5,21 @@ public class ListaEncadeada<T> implements Lista<T> {
     private NoLista<T> ultimo;
     private int qtdeElementos;
 
+    public ListaEncadeada(){
+        primeiro = null;
+    }
+
     @Override
     public void inserir(T valor) {
         NoLista<T> novo = new NoLista<>();
         novo.setInfo(valor);
-        if (this.estaVazia()) {
-            primeiro = novo;
-        } else {
-            ultimo.setProx(novo);
-        }
-        ultimo = novo;
+        novo.setProx(primeiro);
+        this.primeiro = novo;
         qtdeElementos++;
     }
 
     @Override
-    public int buscar(T valor) { // contribui��o Gabriel Klauck
+    public int buscar(T valor) { // contribuição de Gabriel Klauck
         NoLista<T> p = primeiro;
         int contador = 0;
         while (p != null) {
@@ -34,8 +34,8 @@ public class ListaEncadeada<T> implements Lista<T> {
 
     @Override
     public void retirar(T valor) {
-        NoLista<T> p = this.primeiro;
         NoLista<T> anterior = null;
+        NoLista<T> p = this.primeiro;
 
         while (p != null && !p.getInfo().equals(valor)) {
             anterior = p;
@@ -56,7 +56,7 @@ public class ListaEncadeada<T> implements Lista<T> {
     }
 
     @Override
-    public String exibir() { // contribui��o do Gabriel Klauck
+    public String exibir() { // contribuição de Gabriel Klauck
         NoLista<T> p = primeiro;
         String msg = "[";
         while (p != null) {
